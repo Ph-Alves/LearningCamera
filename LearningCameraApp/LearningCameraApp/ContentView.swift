@@ -101,11 +101,13 @@ class CaptureService: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         captureSession.sessionPreset = .high
         
         do {
+            // O input é a conexão do hardware com a session, recebendo os dados
             let input = try AVCaptureDeviceInput(device: camera!)
             if captureSession.canAddInput(input) {
                 captureSession.addInput(input)
             }
             
+            // O output é a externalização disso, como ele vai retornar, o que vai retornar, o que vai sair da session.
             let output = AVCaptureVideoDataOutput()
             output.alwaysDiscardsLateVideoFrames = true
             
